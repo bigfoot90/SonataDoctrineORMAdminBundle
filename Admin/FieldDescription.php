@@ -70,6 +70,22 @@ class FieldDescription extends BaseFieldDescription
     /**
      * {@inheritdoc}
      */
+    public function setEmbeddedFieldMapping($fieldMapping)
+    {
+        if (!is_array($fieldMapping)) {
+            throw new \RuntimeException('The field mapping must be an array');
+        }
+
+        $this->fieldMapping = $fieldMapping;
+
+        $this->type        = $this->type ? : 'object';
+        $this->mappingType = $this->mappingType ? : 'object';
+        $this->fieldName   = $this->fieldName ? : $fieldMapping['fieldName'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setParentAssociationMappings(array $parentAssociationMappings)
     {
         foreach ($parentAssociationMappings as $parentAssociationMapping) {

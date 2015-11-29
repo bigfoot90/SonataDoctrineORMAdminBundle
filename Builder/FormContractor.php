@@ -46,6 +46,11 @@ class FormContractor implements FormContractorInterface
                 $fieldDescription->setFieldMapping($metadata->fieldMappings[$fieldDescription->getName()]);
             }
 
+            // set the default emebedded field mapping
+            if (isset($metadata->embeddedClasses[$fieldDescription->getName()])) {
+                $fieldDescription->setEmbeddedFieldMapping($metadata->embeddedClasses[$fieldDescription->getName()]);
+            }
+
             // set the default association mapping
             if (isset($metadata->associationMappings[$fieldDescription->getName()])) {
                 $fieldDescription->setAssociationMapping($metadata->associationMappings[$fieldDescription->getName()]);
